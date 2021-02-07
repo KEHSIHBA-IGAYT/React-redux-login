@@ -1,0 +1,96 @@
+body {
+  background: #ebf0f4;
+}
+
+.login-container {
+  max-width: 400px;
+  /*min-height: 80vh;*/
+  padding: 1rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-control {
+  font-size: 14px;
+  border: 0.1rem solid #dadada;
+  border-radius: 0.25rem;
+  line-height: 1.36;
+  font-weight: 400;
+  height: 40px;
+  width: 100%;
+  box-shadow: 0 0 10px #2628294b;
+  background: #efefef;
+}
+
+.form-control:hover {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+label {
+  color: #9a999a;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  height: 22px;
+}
+
+.forgot-pass {
+  display: inline-block;
+}
+
+input.error {
+  border-color: red;
+}
+
+.input-feedback {
+  color: rgb(235, 54, 54);
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.login-button {
+  width: 100%;
+  background: rgb(119, 120, 122);
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 0.25rem;
+  font-weight: 600;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: rgb(70, 153, 179);
+  color: white;
+  border: 1px solid rgb(70, 153, 179);
+  transition: ease-in-out background-color 250ms, ease-in-out color 250ms;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: rgb(70, 153, 179);
+}
+
+.loader {
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
