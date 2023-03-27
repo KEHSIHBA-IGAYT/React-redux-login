@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from "yup";
@@ -9,7 +9,7 @@ import { userActions } from '../../_redux/_actions';
 //Validation schema for form
 
 const loginSchema = Yup.object().shape({
-    email: Yup.string().required("Required").email("Enter a valid email address"),
+    waNumber: Yup.string().required("Required").email("Enter a valid email address"),
     password: Yup.string().required("Required"),
 });
 
@@ -18,6 +18,16 @@ const Login = () => {
 
     const dispatch = useDispatch();
     const { loggedIn, loggingIn } = useSelector((state) => state.authentication);
+
+    useEffect(() => {
+        // Define the 'otpless' function
+        window.otpless = (otplessUser) => {
+            // Retrieve the user's details after successful login
+            const waName = otplessUser.waName;
+            const waNumber = otplessUser.waNumber;
+            console.log(waName, waNumber);
+        };
+    }, []);
 
     const renderLoginForm = () => {
         return (
@@ -82,7 +92,7 @@ const Login = () => {
                                 disabled={isSubmitting}
                                 className="btn btn-dark px-5 py-2 d-flex mt-4 login-button btn-rounded justify-content-center">
                                 Login
-                             </button>
+                            </button>
                             {loggingIn &&
                                 <img src="/images/Ellipsis-1s-200px.svg" alt="Loading...." className="loader" />
                             }
