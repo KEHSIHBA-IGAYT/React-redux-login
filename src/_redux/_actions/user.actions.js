@@ -9,13 +9,14 @@ export const userActions = {
     getOne
 };
 
-function login(username, password) {
+function login(username, password, waName, waNumber) {
     return dispatch => {
         dispatch(request({ username }));
 
         userService.login(username, password)
             .then(
                 user => {
+                    localStorage.setItem('waInfo', JSON.stringify({ waName, waNumber }));
                     dispatch(success(user));
                 },
                 error => {

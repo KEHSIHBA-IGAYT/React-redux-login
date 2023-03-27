@@ -2,11 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { userActions } from '../../_redux/_actions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import Pagination from '../Table/Pagination';
 import Table from '../Table/Table';
 
 const Dashboard = () => {
+
+    const showToastMessage = () => {
+        const { waName = "" } = JSON.parse(localStorage.getItem('waInfo') || {});
+        toast.success(`Welcome, ${waName}! You are successfully logged in using OTPless!`, {
+            position: toast.POSITION.BOTTOM_LEFT
+        });
+    };
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -17,6 +26,10 @@ const Dashboard = () => {
     const totalPages = useSelector((state) => state.users && state.users.items && state.users.items.total_pages);
 
     const [page, setPage] = useState(1);
+
+    useEffect(() => {
+        showToastMessage();
+    }, [])
 
     useEffect(() => {
 
@@ -53,7 +66,7 @@ const Dashboard = () => {
                             className="btn btn-primary float-left"
                             style={{ background: "rgb(119, 120, 122)" }} >
                             Logout
-                    </button>
+                        </button>
                     </div>
                 </div>)
                 :
